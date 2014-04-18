@@ -33,3 +33,9 @@
   	overflow: hidden;
   	text-overflow: ellipsis;
 }
+
+h3.about { width: 80%; margin: 3em auto 0; } 
+#about { 
+	width: 80%;
+	margin: 1em auto 0;
+}
