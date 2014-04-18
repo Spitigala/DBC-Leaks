@@ -1,5 +1,7 @@
 DBC-Leaks
 =========
 ### Install
-~~~ $ gem install bundler ~~~
+~~~ 
+$gem install bundler
+~~~
 ~~~ $ bundle ~~~
