@@ -1,0 +1,35 @@
+.tumblr {
+	margin-top: 7%;
+}
+
+.tumblr li {
+	min-height: 200px;
+	max-height: 500px;
+	width: 20%;
+	list-style-type: none;
+	float: left;
+	margin: 0 5% 5% 0;
+	display: block;
+}
+
+.tumblr a {
+	position: relative;
+}
+
+.tumblr .img_container {
+	min-height: 300px;
+}
+
+.tumblr img {
+	max-width: 100%;
+	max-height: 100%;
+	border: 1px solid rgba(0,0,0,0.1);	
+}
+
+.tumblr p {
+	display: block;
+	text-align: center;
+	padding: 2em 0 0;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
