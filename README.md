@@ -1,6 +1,6 @@
 DBC-Leaks
 =========
-### Install
+###  Required gem
 ~~~ 
 $ gem install bundler
 $ bundle 
