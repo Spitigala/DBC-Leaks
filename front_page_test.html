@@ -1,0 +1,37 @@
+<ul>
+<%
+
+# gem install json
+require 'rubygems.org'
+require 'json'
+require 'open-uri'
+
+class Tumblr
+  API_URL = "http://api.tumblr.com/v2/tagged?"
+  API_KEY = "fuiKNFp9vQFvjLNvx4sUwti4Yb5yGutBN4Xh10LXZhhRKjWlV4"
+  DEFAULT_TAG = "fiddlercrabs"
+
+  def self.fetch_raw(tag = nil)
+    tag ||= DEFAULT_TAG
+    tumblr_url = "#{API_URL}tag=#{tag}&api_key=#{API_KEY}"
+    open(tumblr_url).read
+  end
+
+  def self.fetch_json(tag = nil)
+    JSON.parse(fetch_raw(tag))
+  end
+end
+
+
+
+def show_json
+  Tumblr.fetch_json
+end
+
+
+p show_json["response"][0]["image_permalink"]
+p show_json["response"][0]["post_url"]
+p show_json["response"][0]["caption"]
+%>
+<% end %>
+</ul>
