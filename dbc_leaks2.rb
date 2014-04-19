@@ -4,20 +4,25 @@ require 'json'
 require 'open-uri'
 
 class Tumblr
-
-  class Post
-    attr_reader :title, :body, :link
+ class Post
+    attr_reader :title, :body, :link, :img
     def initialize(args)
-      @title, @body, @link = args[:title], args[:body], args[:link]
+      @title, @body, @link, @img = args[:title], args[:body], args[:link], args[:img]
+      puts "before --- #{@img}"
+      img_modify
     end
     def to_s
-      "#{self.title}\n(#{self.link})\n#{self.body}"
+      "#{self.title}\n(#{self.link})\n#{self.body}\n#{self.img}"
     end
-  end
+    def img_modify
+      @img = "http://scm-l3.technorati.com/12/12/13/73853/devbootcamp.png?t=20121213131231" if @img.nil?
+      puts "after --- #{@img}"
+    end
+ end
 
   API_URL = "http://api.tumblr.com/v2/tagged?"
   API_KEY = "fuiKNFp9vQFvjLNvx4sUwti4Yb5yGutBN4Xh10LXZhhRKjWlV4"
-  DEFAULT_TAG = "dbcfiddlercrabs"
+  DEFAULT_TAG = "thisisatestandonlyatest"
 
   def self.fetch_raw(tag = nil)
     tag ||= DEFAULT_TAG
@@ -36,12 +41,14 @@ class Tumblr
 
   private
   def self.post_from(json)
-    p json
     Post.new(title: json["title"],
              body:  json["body"],
-             link:  json["post_url"])
+             link:  json["post_url"],
+             img:   json["photos"][0]["alt_sizes"][1]["url"]
+             )
   end
 end
+
 
 # json = File.read('http://api.tumblr.com/v2/tagged?tag=fiddlercrabs&api_key=fuiKNFp9vQFvjLNvx4sUwti4Yb5yGutBN4Xh10LXZhhRKjWlV4') #wrong syntax
 
@@ -58,9 +65,12 @@ end
 
 # Tumblr.fetch_posts("devbootcamp")
 
-Tumblr.fetch_posts.each do |p|
-  puts p
-  puts "-"*20
+Tumblr.fetch_posts.each do |post|
+  p post.title
+  p post.body
+  p post.link
+  p post.img
+  puts "-----"
 end
 
 # test =  show_json["response"]

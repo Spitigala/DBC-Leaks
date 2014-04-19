@@ -4,13 +4,15 @@
 
 
 	<ul class="tumblr">
-		<li><div class="image_container"><img src=<%= img_link %>></div><p><%= lorem %></p></li>
-		<li><div class="image_container"><img src=<%= img_link2 %>></div><p><%= lorem %></p></li>
-		<li><div class="image_container"><img src=<%= img_link %>></div><p><%= lorem %></p></li>
-		<li><div class="image_container"><img src=<%= img_link2 %>></div><p><%= lorem %></p></li>
-		<li><div class="image_container"><img src=<%= img_link %>></div><p><%= lorem %></p></li>
-		<li><div class="image_container"><img src=<%= img_link2 %>></div><p><%= lorem %></p></li>
-		<li><div class="image_container"><img src=<%= img_link %>></div><p><%= lorem %></p></li>
-		<li><div class="image_container"><img src=<%= img_link2 %>></div><p><%= lorem %></p></li>
-
+	 	<% Tumblr.fetch_posts.each do |post| %>
+	        <li>
+	        	<a href="<%= post.link %>">
+	        		<div class="image_container">
+	        			<img src=<%= post.img %>>
+	        		</div>
+        		<h4><%= post.title %></h4>
+        		<%= post.body %>
+        		</a>
+	        </li>
+	    <% end %>
 	</ul>

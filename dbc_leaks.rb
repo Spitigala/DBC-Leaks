@@ -32,9 +32,9 @@ end
 
 # end
 
-p show_json["response"][0]["image_permalink"]
-p show_json["response"][0]["post_url"]
-p show_json["response"][0]["caption"]
+p show_json["response"][0]["photos"][0]["alt_sizes"][1]["url"]
+# p show_json["response"][0]["post_url"]
+# p show_json["response"][0]["caption"]
 
 
 
